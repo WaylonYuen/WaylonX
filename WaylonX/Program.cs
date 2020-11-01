@@ -1,9 +1,0 @@
-﻿using System;
-
-namespace WaylonX {
-    class Program {
-        static void Main(string[] args) {
-            Console.WriteLine("Hello World! Git Test");
-        }
-    }
-}
