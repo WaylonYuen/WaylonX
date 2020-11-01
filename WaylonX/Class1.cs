@@ -1,6 +1,11 @@
 ﻿using System;
 
 namespace WaylonX {
-    public class Class1 {
+    public class Test {
+
+        public override string ToString() {
+            return "WaylonX.Lib Test.";
+        }
+
     }
 }
