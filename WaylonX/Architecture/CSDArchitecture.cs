@@ -1,68 +1,10 @@
 ﻿using System;
 using System.Net.Sockets;
 using WaylonX.Cloud;
-using WaylonX.Net;
 using WaylonX.Packets;
 using WaylonX.Threading;
 
 namespace WaylonX.Architecture {
-
-    /// <summary>
-    /// Client-Server基礎Info參數
-    /// </summary>
-    public class CSBaseInfoEventArgs : EventArgs {
-
-        /// <summary>
-        /// 主機IP
-        /// </summary>
-        public string IP { get; set; }
-        
-        /// <summary>
-        /// 主機端口
-        /// </summary>
-        public int Port { get; set; }
-
-        /// <summary>
-        /// 操作環境
-        /// </summary>
-        public Environment Environment { get; set; }
-
-    }
-
-    /// <summary>
-    /// Client-Server-Model: 主從式架構
-    /// </summary>
-    public abstract class CSBase_Catalina : CSDArchitecture_Catalina {
-
-        #region Property
-
-        /// <summary>
-        /// 網路管理類
-        /// </summary>
-        protected NetworkManagement NetworkManagement { get; set; }
-
-        #endregion
-
-        //Constructor
-        public CSBase_Catalina(string name) : base(name) {
-            NetworkManagement = new NetworkManagement();
-        }
-
-        #region Methods
-
-        /// <summary>
-        /// 佇列分配器 : 分配封包到對應的佇列隊伍中
-        /// </summary>
-        protected virtual void QueueDistributor(Packet packet) { }
-
-        /// <summary>
-        /// 監聽封包_線程
-        /// </summary>
-        /// <param name="obj"></param>
-        protected abstract void PacketReceiverThread(object obj);
-
-        #endregion
-    }
 
     /// <summary>
     /// 基本服務框架 -> Client,Server,Database框架 -> Catalina版
