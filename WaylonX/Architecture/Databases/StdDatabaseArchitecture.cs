@@ -14,7 +14,7 @@ namespace WaylonX.Architecture.Databases {
         #region Property
 
         //資料參數
-        public DatabaseConnectInfoEventArgs Metrics { get => CSDargs as DatabaseConnectInfoEventArgs; }
+        public DatabaseConnectInfoEventArgs Metrics { get => CSDArgs as DatabaseConnectInfoEventArgs; }
 
         #endregion
 

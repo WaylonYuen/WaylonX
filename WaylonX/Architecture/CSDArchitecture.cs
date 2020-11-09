@@ -9,7 +9,7 @@ namespace WaylonX.Architecture {
     /// <summary>
     /// 基本服務框架 -> Client,Server,Database框架 -> Catalina版
     /// </summary>
-    public abstract class CSDArchitecture_Catalina {
+    public abstract class CSDArchitecture {
 
         #region Property
 
@@ -23,25 +23,36 @@ namespace WaylonX.Architecture {
         /// </summary>
         public static bool IsClose { get; protected set; }
 
+        /// <summary>
+        /// 架構參數
+        /// </summary>
+        protected EventArgs CSDArgs { get; private set; }
+
         #endregion
 
         #region Local Values
 
-        //事件執行器
-        protected event EventHandler Init;
-        public event EventHandler ShutDown;
+        /// <summary>
+        /// 關閉CSD事件執行器
+        /// </summary>
+        public event EventHandler ShutDown; //Global
 
-        //事件參數
-        protected EventArgs CSDargs { get; private set; }
-
+        /// <summary>
+        /// CSD架構初始化事件執行器
+        /// </summary>
+        protected event EventHandler Init;  //Local
+        
         #endregion
 
-        //Constructor
-        public CSDArchitecture_Catalina(string name) {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name"></param>
+        public CSDArchitecture(string name) {
             Name = name;
         }
 
-        #region Trigger
+        #region Trigger(觸發器)
 
         /// <summary>
         /// 啓動器
@@ -50,20 +61,12 @@ namespace WaylonX.Architecture {
 
             //賦值
             IsClose = false;
-            CSDargs = args;
+            CSDArgs = args;
+
 
             //註冊接收器
             //如果連線失敗則不再註冊接收器,直接返回
-            if (!StartingEventReceiver()) return false;
-            StartedEventReceiver();
-
-            //執行
-            if (Init != null) {
-                Shared.Logger.Info("正在初始化...");
-                Init.Invoke(null, EventArgs.Empty);
-            }
-
-            return true;
+            return StartingEventReceiver();
         }
 
         /// <summary>
@@ -86,38 +89,50 @@ namespace WaylonX.Architecture {
 
         #endregion
 
-        #region Receiver
+        #region Receiver(接收器)
 
         /// <summary>
         /// 啟動程序時的事件接收器註冊
         /// </summary>
         protected virtual bool StartingEventReceiver() {
+
+            //新增訂閱
             Init += new EventHandler(OnAwake);
-            Init += new EventHandler(OnConnecting);
+            Init += new EventHandler(OnConnecting); //執行OnConnecting會取消對自身的訂閱
 
             if (Init != null) {
-                Shared.Logger.Info("正在初始化...");
-                Init.Invoke(null, EventArgs.Empty);
-
-                //取消訂閱
-                Init -= new EventHandler(OnAwake);
-                Init -= new EventHandler(OnConnecting);
-
-                //檢查連線是否失敗: 失敗則直接返回
-                if (IsClose) return false;
+                Shared.Logger.Info($"{this.Name} 正在初始化...");
+                Init.Invoke(null, EventArgs.Empty); //Connecting成功 : IsClose = true;
             }
 
-            Init += new EventHandler(OnRegistered);
-            Init += new EventHandler(OnStartThread);
 
-            return true;
+            if (!IsClose) {
+
+                //添加訂閱
+                Init += new EventHandler(OnRegistered);     //註冊器
+                Init += new EventHandler(OnStartThread);    //線程
+
+                StartedEventReceiver();
+
+                //執行
+                if (Init != null) {
+                    Shared.Logger.Info($"{this.Name} 啟動線程...");
+                    Init.Invoke(null, EventArgs.Empty);
+                }
+
+                return true;
+
+            } else {
+
+                return false;
+            }
         }
 
         /// <summary>
         /// 啟動程序後的事件接收器註冊
         /// </summary>
         protected virtual void StartedEventReceiver() {
-
+            //啟動後執行
         }
 
         /// <summary>
@@ -136,7 +151,7 @@ namespace WaylonX.Architecture {
 
         #endregion
 
-        #region EventReceiver
+        #region EventReceiver(事件接收器)
 
         /// <summary>
         /// 在Start函數被調用前執行
@@ -238,12 +253,12 @@ namespace WaylonX.Architecture {
         #region Methods
 
         /// <summary>
-        /// 接收資料
+        /// 字節組接收器
         /// </summary>
         /// <param name="socket">連線資料</param>
         /// <param name="dataLength">資料長度</param>
         /// <returns></returns>
-        public static byte[] Receive(Socket socket, int dataLength) {
+        public static byte[] DataBytesReceiver(Socket socket, int dataLength) {
 
             //安全性檢查
             if (dataLength <= 0) {
@@ -287,6 +302,11 @@ namespace WaylonX.Architecture {
 
             return data_Bytes;
         }
+
+        //啟動連線
+
+        //啟動線程
+
 
         #endregion
 

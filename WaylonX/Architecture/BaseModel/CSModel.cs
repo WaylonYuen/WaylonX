@@ -29,7 +29,7 @@ namespace WaylonX.Architecture.BaseModel {
     /// <summary>
     /// Client-Server-Model: 主從式架構
     /// </summary>
-    public abstract class CSModel : CSDArchitecture_Catalina {
+    public abstract class CSModel : CSDArchitecture {
 
         #region Property
 

@@ -66,7 +66,7 @@ namespace WaylonX.Architecture.BaseModel {
     /// <summary>
     /// 資料庫基本架構
     /// </summary>
-    public abstract class DBModel : CSDArchitecture_Catalina, IMySqlCmd {
+    public abstract class DBModel : CSDArchitecture, IMySqlCmd {
 
         #region Property
 
