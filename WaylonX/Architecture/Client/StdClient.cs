@@ -17,7 +17,7 @@ namespace WaylonXUnity.Net {
         #region Property
 
         //資料參數
-        public ClientInfoEventArgs Metrics { get => CSDargs as ClientInfoEventArgs; }
+        public ClientInfoEventArgs Metrics { get => CSDArgs as ClientInfoEventArgs; }
 
         //用戶
         public IUser User { get; set; }
@@ -130,7 +130,7 @@ namespace WaylonXUnity.Net {
 
             while (!IsClose) {
 
-                var bys_packetLength = Receive(socket, BasicTypes.SizeOf.Int);
+                var bys_packetLength = DataBytesReceiver(socket, BasicTypes.SizeOf.Int);
 
                 if (bys_packetLength != null) {
 
@@ -138,7 +138,7 @@ namespace WaylonXUnity.Net {
                     var packetLength = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bys_packetLength, 0));
 
                     //取得封包 &解析
-                    var packet = new Packet().Unpack(Receive(socket, packetLength));
+                    var packet = new Packet().Unpack(DataBytesReceiver(socket, packetLength));
 
                     //檢查封包(通過則進行封包分類, 否則丟棄封包)
                     if (packet.Header.Checking(User)) {
