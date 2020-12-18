@@ -105,7 +105,7 @@ namespace WaylonX.Architecture {
                 Init.Invoke(null, EventArgs.Empty); //Connecting成功 : IsClose = true;
             }
 
-
+            //如果連線成功,則啟動後續程序( 註冊器和線程 )
             if (!IsClose) {
 
                 //添加訂閱
