@@ -1,4 +1,5 @@
 ﻿using System;
+using WaylonX.Architecture.BaseModel;
 using WaylonX.Users;
 
 namespace WaylonX.Architecture.Server {
@@ -15,7 +16,7 @@ namespace WaylonX.Architecture.Server {
     /// <summary>
     /// 標準服務器模型架構
     /// </summary>
-    public abstract class StdServerArchitecture : CSBase_Catalina {
+    public abstract class StdServerArchitecture : CSModel {
 
         #region Property
 

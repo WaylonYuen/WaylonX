@@ -1,4 +1,5 @@
 ﻿using System;
+using WaylonX.Architecture.BaseModel;
 
 namespace WaylonX.Architecture.Client {
 
@@ -9,7 +10,7 @@ namespace WaylonX.Architecture.Client {
     /// <summary>
     /// 標準客戶端架構
     /// </summary>
-    public abstract class StdClientArchitecture : CSBase_Catalina {
+    public abstract class StdClientArchitecture : CSModel {
 
         //Constructor
         public StdClientArchitecture(string name) : base(name) {

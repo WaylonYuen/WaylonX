@@ -20,7 +20,7 @@ namespace WaylonX.Architecture.Server {
         #region Property
 
         //資料參數
-        public ServerInfoEventArgs Metrics { get => CSDargs as ServerInfoEventArgs; }
+        public ServerInfoEventArgs Metrics { get => CSDArgs as ServerInfoEventArgs; }
 
         #endregion
 
@@ -222,7 +222,7 @@ namespace WaylonX.Architecture.Server {
                 //    break;
                 //}
 
-                var bys_packetLength = Receive(userNet.Socket, BasicTypes.SizeOf.Int);
+                var bys_packetLength = DataBytesReceiver(userNet.Socket, BasicTypes.SizeOf.Int);
 
                 if (bys_packetLength != null) {
 
@@ -230,7 +230,7 @@ namespace WaylonX.Architecture.Server {
                     var packetLength = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(bys_packetLength, 0));
 
                     //取得封包 &解析
-                    var packet = new Packet().Unpack(Receive(userNet.Socket, packetLength));
+                    var packet = new Packet().Unpack(DataBytesReceiver(userNet.Socket, packetLength));
 
                     //檢查封包(通過則進行封包分類, 否則丟棄封包)
                     if (packet.Header.Checking(user)) {
