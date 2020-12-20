@@ -11,12 +11,11 @@ namespace WaylonX.Net {
 
         #region Property
 
-        Socket ILinkInfo.Socket { get { return socket; } }
+        Socket ILinkInfo.Socket => socket;
 
-        IPEndPoint ILinkInfo.IPEndPoint { get { return iPEndPoint; } }
+        IPEndPoint ILinkInfo.IPEndPoint => iPEndPoint;
 
-        NetworkMode ILinkInfo.NetworkMode { get { return networkMode; } }
-
+        NetworkMode ILinkInfo.NetworkMode => networkMode;
         
         #endregion
 
@@ -29,10 +28,10 @@ namespace WaylonX.Net {
         #endregion
 
         /// <summary>
-        /// Instructor
+        /// Constructor
         /// </summary>
-        /// <param name="socket"></param>
-        /// <param name="iPEndPoint"></param>
+        /// <param name="socket">套接字</param>
+        /// <param name="iPEndPoint">端點</param>
         public Connection(Socket socket, string ip, int port) {
             this.socket = socket;
             iPEndPoint = new IPEndPoint(IPAddress.Parse(ip), port);
