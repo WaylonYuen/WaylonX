@@ -24,7 +24,12 @@ namespace WaylonX.Net {
     public class NetworkManagement {
 
         #region Property
+
+        /// <summary>
+        /// 
+        /// </summary>
         private Dictionary<ConnChannel, ILinkInfo> ConnDict { get; set; } //網路連線資料表
+
         #endregion
 
         #region Constructor
@@ -118,7 +123,7 @@ namespace WaylonX.Net {
 
                 //接口過濾
                 IConnection IConnection = Conn;
-
+                
                 //啟動監聽並判斷監聽是否成功
                 if (IConnection.Listen(backlog)) {  //由於Connect()方法被限定在IConnection接口中,因此必須接口過濾
                     ConnDict.Add(channel, Conn);    //保存該監聽資料

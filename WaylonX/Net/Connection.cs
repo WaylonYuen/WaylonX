@@ -11,12 +11,11 @@ namespace WaylonX.Net {
 
         #region Property
 
-        Socket ILinkInfo.Socket { get { return socket; } }
+        Socket ILinkInfo.Socket => socket;
 
-        IPEndPoint ILinkInfo.IPEndPoint { get { return iPEndPoint; } }
+        IPEndPoint ILinkInfo.IPEndPoint => iPEndPoint;
 
-        NetworkMode ILinkInfo.NetworkMode { get { return networkMode; } }
-
+        NetworkMode ILinkInfo.NetworkMode => networkMode;
         
         #endregion
 
