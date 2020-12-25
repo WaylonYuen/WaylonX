@@ -11,22 +11,22 @@ namespace WaylonX.Packets.Base {
     public interface IPacketBase {
 
         /// <summary>
-        /// StdPacketHeader架構長度: 資料的索引起始位置即該架構長度
+        /// 封包架構長度:
+        /// 資料的索引起始位置(即: 架構長度)
         /// </summary>
         int StructSIZE { get; }
 
         /// <summary>
-        /// 封裝
+        /// 封包封裝
         /// </summary>
-        /// <returns>Bytes</returns>
+        /// <returns>封包字節組</returns>
         byte[] ToPackup();
 
         /// <summary>
-        /// 封包
+        /// 封包解析:
+        /// 解析結果保存到對應類別架構中, 因此沒有返回值
         /// </summary>
-        /// <param name="user"></param>
-        /// <param name="bys_netPacket"></param>
-        /// <returns></returns>
+        /// <param name="bys_packet">封包字節組</param>
         void Unpack(byte[] bys_packet);
     }
 
