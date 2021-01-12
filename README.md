@@ -26,7 +26,7 @@ by Waylon call WaylonX Library
 .   .   ├── #3-5_Algorithm                  # --            (算法)  //算法練習
 .   .   └── ...
 .   .
-.   ├── #04_Poject                          # Ideas         (項目)  //專案｜實作
+.   ├── #04_Project                          # Ideas         (項目)  //專案｜實作
 .   .
 .   ├── .vscode
 .   ├── .gitattributes
