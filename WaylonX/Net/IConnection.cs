@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 
 namespace WaylonX.Net {
@@ -31,7 +30,7 @@ namespace WaylonX.Net {
         #region Property
 
         /// <summary>
-        /// Socket
+        /// Socket => 套接字
         /// </summary>
         Socket Socket { get; }
 
