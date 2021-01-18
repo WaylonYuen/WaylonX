@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using MySql.Data.MySqlClient;
-using WaylonX.Database.Architecture.BaseModel;
 using WaylonX.Cloud;
 using WaylonX.Loggers;
 using WaylonX.Packets;

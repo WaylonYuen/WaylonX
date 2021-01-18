@@ -1,9 +1,14 @@
-﻿using System;
+﻿//System
+using System;
+
+//MySql
 using MySql.Data.MySqlClient;
+
+//WaylonX
 using WaylonX.Architecture;
 using WaylonX.Database.Architecture.Databases;
 
-namespace WaylonX.Database.Architecture.BaseModel {
+namespace WaylonX.Database.Architecture {
 
     /// <summary>
     /// 資料庫連線資訊EventArgs
