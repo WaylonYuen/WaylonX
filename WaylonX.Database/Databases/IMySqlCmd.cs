@@ -1,7 +1,7 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
 
-namespace WaylonX.Architecture.Databases {
+namespace WaylonX.Database.Architecture.Databases {
 
     public interface IMySqlCmd {
 
