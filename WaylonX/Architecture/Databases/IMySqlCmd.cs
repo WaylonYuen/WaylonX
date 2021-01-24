@@ -1,63 +1,63 @@
-﻿using System;
-using MySql.Data.MySqlClient;
+﻿//using System;
+//using MySql.Data.MySqlClient;
 
-namespace WaylonX.Architecture.Databases {
+//namespace WaylonX.Architecture.Databases {
 
-    public interface IMySqlCmd {
+//    public interface IMySqlCmd {
 
-        /// <summary>
-        /// 查詢
-        /// </summary>
-        /// <param name="cmd"></param>
-        /// <returns></returns>
-        bool Search(string select, string from, string where);
+//        /// <summary>
+//        /// 查詢
+//        /// </summary>
+//        /// <param name="cmd"></param>
+//        /// <returns></returns>
+//        bool Search(string select, string from, string where);
 
-        /// <summary>
-        /// 查詢
-        /// </summary>
-        /// <param name="cmd"></param>
-        /// <returns></returns>
-        bool Search(string MySqlCmdStr);
+//        /// <summary>
+//        /// 查詢
+//        /// </summary>
+//        /// <param name="cmd"></param>
+//        /// <returns></returns>
+//        bool Search(string MySqlCmdStr);
 
-        #region NonQuery()
+//        #region NonQuery()
 
-        /// <summary>
-        /// 添加
-        /// </summary>
-        /// <param name="cmd"></param>
-        /// <returns></returns>
-        int Insert(string into, string values);
+//        /// <summary>
+//        /// 添加
+//        /// </summary>
+//        /// <param name="cmd"></param>
+//        /// <returns></returns>
+//        int Insert(string into, string values);
 
-        /// <summary>
-        /// 更新
-        /// </summary>
-        /// <param name="cmd"></param>
-        /// <returns></returns>
-        int Update(string from, string set, string where);
+//        /// <summary>
+//        /// 更新
+//        /// </summary>
+//        /// <param name="cmd"></param>
+//        /// <returns></returns>
+//        int Update(string from, string set, string where);
 
-        /// <summary>
-        /// 刪除
-        /// </summary>
-        /// <param name="cmd"></param>
-        /// <returns></returns>
-        int Delete(MySqlCommand cmd);
+//        /// <summary>
+//        /// 刪除
+//        /// </summary>
+//        /// <param name="cmd"></param>
+//        /// <returns></returns>
+//        int Delete(MySqlCommand cmd);
 
-        #endregion
+//        #endregion
 
-        /// <summary>
-        /// 純量運算
-        /// </summary>
-        /// <param name="cmd"></param>
-        /// <returns></returns>
-        object Scalar(string func, string from, string where);
+//        /// <summary>
+//        /// 純量運算
+//        /// </summary>
+//        /// <param name="cmd"></param>
+//        /// <returns></returns>
+//        object Scalar(string func, string from, string where);
 
-        /// <summary>
-        /// 通用
-        /// </summary>
-        /// <param name="cmdStr"></param>
-        /// <returns></returns>
-        MySqlCommand Universal(string cmdStr);
+//        /// <summary>
+//        /// 通用
+//        /// </summary>
+//        /// <param name="cmdStr"></param>
+//        /// <returns></returns>
+//        MySqlCommand Universal(string cmdStr);
 
-    }
+//    }
 
-}
+//}

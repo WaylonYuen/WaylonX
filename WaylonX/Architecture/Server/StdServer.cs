@@ -62,6 +62,10 @@ namespace WaylonX.Architecture.Server {
                 this.Close();
             }
 
+            //取消對自身的初始化訂閱
+            Init -= new EventHandler(OnAwake);
+            Init -= new EventHandler(OnConnecting);
+
         }
 
         /// <summary>
