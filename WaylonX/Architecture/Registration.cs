@@ -2,36 +2,78 @@
 
 namespace WaylonX.Architecture {
 
+    public interface IRegistration {
+
+        /// <summary>
+        /// 執行回調註冊器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void OnRegistrar(object sender, EventArgs e);
+    }
+
     /// <summary>
-    /// 佇列回調註冊器
+    /// 註冊器
     /// </summary>
-    public static class Registration {
+    public class Registration {
 
         /// <summary>
-        /// 監聽註冊器事件: 封包接收頻道
+        /// 註冊器事件
         /// </summary>
-        public static event EventHandler MonitorRegister;
+        public event EventHandler Registrar;
 
         /// <summary>
-        /// 回調註冊器事件
+        /// Constructor
         /// </summary>
-        public static event EventHandler CallbackRegister;
+        /// <param name="handler"></param>
+        public Registration() { }
 
         /// <summary>
-        /// 執行註冊器
+        /// 訂閱器:繼承了IRegister的類別會被此方法訂閱
         /// </summary>
-        public static void Excute() {
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public T Subscriber<T>(T obj) {
 
-            //創建封包頻道
-            if (MonitorRegister != null) {
-                MonitorRegister.Invoke(null, EventArgs.Empty);
+            if (obj is IRegistration registration) {
+                this.Registrar += registration.OnRegistrar;
             }
 
-            //創建封包回調
-            if (CallbackRegister != null) {
-                CallbackRegister.Invoke(null, EventArgs.Empty);
+            return obj;
+        }
+
+        /// <summary>
+        /// 退訂器:繼承了IRegister的類別會被此方法退訂
+        /// </summary>
+        /// <typeparam name="T">泛用型</typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public T Unsubscriber<T>(T obj) {
+
+            if (obj is IRegistration registration) {
+                this.Registrar -= registration.OnRegistrar;
             }
+
+            return obj;
+        }
+
+        /// <summary>
+        /// 執行器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public bool Excute(object sender, EventArgs e) {
+
+            if (Registrar != null) {
+                Registrar.Invoke(this, e);
+                return true;
+            }
+
+            return false;
         }
 
     }
+
 }
