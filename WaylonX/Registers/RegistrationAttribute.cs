@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WaylonX.Architecture {
+namespace WaylonX.Registers {
 
     /// <summary>
     /// 註冊器特性

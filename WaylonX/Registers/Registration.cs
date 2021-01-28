@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WaylonX.Architecture {
+namespace WaylonX.Registers {
 
     public interface IRegistration {
 

@@ -7,5 +7,6 @@
   <ItemGroup>
     <Folder Include="Architecture\Databases\" />
     <Folder Include="Architecture\BaseModel\" />
+    <Folder Include="Registers\" />
   </ItemGroup>
 </Project>
