@@ -66,7 +66,7 @@ namespace WaylonX.Architecture {
 
             //註冊接收器
             //如果連線失敗則不再註冊接收器,直接返回
-            return StartingEventReceiver();
+            return StartingEventReceiver(); //啟動註冊器
         }
 
         /// <summary>
@@ -99,10 +99,13 @@ namespace WaylonX.Architecture {
             //新增訂閱
             Init += new EventHandler(OnAwake);
             Init += new EventHandler(OnConnecting); //執行OnConnecting會取消對自身的訂閱
-
             if (Init != null) {
                 Shared.Logger.Info($"{this.Name} 正在初始化...");
-                Init.Invoke(null, EventArgs.Empty); //Connecting成功 : IsClose = true;
+                Init.Invoke(null, EventArgs.Empty); //Connecting 成功 : IsClose = true;
+
+                //todo 交由此類來取消OnConnecting()的訂閱
+                //Init -= new EventHandler(OnAwake);
+                //Init -= new EventHandler(OnConnecting);
             }
 
             //如果連線成功,則啟動後續程序( 註冊器和線程 )
