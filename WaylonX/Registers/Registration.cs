@@ -9,7 +9,7 @@ namespace WaylonX.Registers {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void OnRegistrar(object sender, EventArgs e);
+        void OnRegister(object sender, EventArgs e);
     }
 
     /// <summary>
@@ -20,7 +20,7 @@ namespace WaylonX.Registers {
         /// <summary>
         /// 註冊器事件
         /// </summary>
-        public event EventHandler Registrar;
+        public event EventHandler Register;
 
         /// <summary>
         /// Constructor
@@ -37,7 +37,7 @@ namespace WaylonX.Registers {
         public T Subscriber<T>(T obj) {
 
             if (obj is IRegistration registration) {
-                this.Registrar += registration.OnRegistrar;
+                this.Register += registration.OnRegister;
             }
 
             return obj;
@@ -52,7 +52,7 @@ namespace WaylonX.Registers {
         public T Unsubscriber<T>(T obj) {
 
             if (obj is IRegistration registration) {
-                this.Registrar -= registration.OnRegistrar;
+                this.Register -= registration.OnRegister;
             }
 
             return obj;
@@ -66,8 +66,8 @@ namespace WaylonX.Registers {
         /// <returns></returns>
         public bool Excute(object sender, EventArgs e) {
 
-            if (Registrar != null) {
-                Registrar.Invoke(this, e);
+            if (Register != null) {
+                Register.Invoke(this, e);
                 return true;
             }
 
