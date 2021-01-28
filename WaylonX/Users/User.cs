@@ -7,6 +7,9 @@ using WaylonX.Packets;
 
 namespace WaylonX.Users {
 
+    /// <summary>
+    /// 用戶
+    /// </summary>
     public class User : IUser {
 
         #region Prop
@@ -29,14 +32,27 @@ namespace WaylonX.Users {
         #endregion
 
         #region Local Values
+
+        /// <summary>
+        /// Local Socket
+        /// </summary>
         private Socket m_Socket;
+
+        /// <summary>
+        /// Local 網路狀態
+        /// </summary>
         private NetworkState m_networkState;
+
+        /// <summary>
+        /// Local 驗證碼
+        /// </summary>
         private int m_VerificationCode;
 
         /// <summary>
         /// 線程工作項
         /// </summary>
         private readonly List<Thread> threadWorkItem = new List<Thread>();
+
         #endregion
 
         #region Constructor
@@ -51,6 +67,7 @@ namespace WaylonX.Users {
             m_networkState = networkState;              //設定用戶網路狀態
             m_VerificationCode = this.GetHashCode();    //設定用戶驗證碼
         }
+
         #endregion
 
         #region Interface Methods
