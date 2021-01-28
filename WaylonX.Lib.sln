@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaylonX", "WaylonX\WaylonX.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaylonX.ShowCase", "WaylonX.ShowCase\WaylonX.ShowCase.csproj", "{BB1F13CD-72C4-440B-A4FA-D5711DF61FDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaylonX.Database", "WaylonX.Database\WaylonX.Database.csproj", "{EA451050-1F97-4EF6-8AC6-89F9B48C23AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{BB1F13CD-72C4-440B-A4FA-D5711DF61FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB1F13CD-72C4-440B-A4FA-D5711DF61FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB1F13CD-72C4-440B-A4FA-D5711DF61FDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA451050-1F97-4EF6-8AC6-89F9B48C23AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA451050-1F97-4EF6-8AC6-89F9B48C23AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA451050-1F97-4EF6-8AC6-89F9B48C23AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA451050-1F97-4EF6-8AC6-89F9B48C23AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
